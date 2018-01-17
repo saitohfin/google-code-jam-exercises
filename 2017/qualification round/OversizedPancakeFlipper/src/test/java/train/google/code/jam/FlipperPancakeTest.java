@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-class PackageFlipperTest {
+class FlipperPancakeTest {
 
     @Before
     public void setUp(){
