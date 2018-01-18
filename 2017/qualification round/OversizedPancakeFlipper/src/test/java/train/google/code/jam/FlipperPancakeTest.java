@@ -2,8 +2,11 @@ package train.google.code.jam;
 
 import org.junit.Before;
 import org.junit.Test;
+import train.google.code.jam.exceptions.PancakeHouseCreationException;
 
-class FlipperPancakeTest {
+import static org.junit.Assert.assertEquals;
+
+public class FlipperPancakeTest {
 
     private static final int ONE_PANCAKE_SIZE =1;
 
@@ -25,13 +28,11 @@ class FlipperPancakeTest {
     }*/
 
     @Test(expected = PancakeHouseCreationException.class)//Expected
-    public void creatingAHouseOFPancakes_WithAPancakeFlipperSmallerThanTwo_ShouldThrownExceptions()
-    {
+    public void creatingAHouseOFPancakes_WithAPancakeFlipperSmallerThanTwo_ShouldThrownExceptions() throws PancakeHouseCreationException {
         //Given
-        PancakeHouse houseOfPancakes;
         PancakeFlipper pancakeFlipper = new PancakeFlipper(ONE_PANCAKE_SIZE);
 
         //When
-        houseOfPancakes=new PancakeHouse(pancakeFlipper);
+        new PancakeHouse(pancakeFlipper);
     }
 }
