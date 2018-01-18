@@ -15,18 +15,6 @@ public class FlipperPancakeTest {
 
     }
 
-    /*@Test
-    public void calculate_amount_steps_to_flip_a_happy_side_is_zero() {
-        //Arrange
-        final Integer expected = 0;
-        PancakeFlipper flipper = new PancakeFlipper(1);
-        String currentPancake = "+";
-        //Act
-        Integer amount_steps = flipper.flip_to_perfect_happy(currentPancake);
-        //Assert
-        assertEquals("The amount of steps is incorrect", expected, amount_steps);
-    }*/
-
     @Test(expected = PancakeHouseCreationException.class)//Expected
     public void creatingAHouseOFPancakes_WithAPancakeFlipperSmallerThanTwo_ShouldThrownExceptions() throws PancakeHouseCreationException {
         //Given
@@ -34,5 +22,18 @@ public class FlipperPancakeTest {
 
         //When
         new PancakeHouse(pancakeFlipper);
+    }
+
+    @Test
+    public void calculate_amount_steps_to_flip_a_happy_side_is_zero() throws PancakeHouseCreationException {
+        //Arrange
+        String currentPancake = "++";
+        final PancakeResult expected = new PancakeResult(0, "++");
+        PancakeFlipper flipper = new PancakeFlipper(2);
+        PancakeHouse house = new PancakeHouse(flipper);
+        //Act
+        PancakeResult result = house.flip(currentPancake);
+        //Assert
+        assertEquals("The result is not correct", expected, result);
     }
 }
