@@ -14,6 +14,7 @@ public class PancakeFlipper {
     public String flip(String pancake) {
         String new_pancake = pancake.toString();
         Integer continuos_white = 0;
+
         for(int index = 0; index < pancake.length(); index++){
             if(pancake.charAt(index) == WHITE_PANCAKE){
                 continuos_white++;
@@ -27,6 +28,7 @@ public class PancakeFlipper {
         return  new_pancake;
     }
 
+    /**/
     private String replace_sequence(String new_pancake, int index) {
         int first_index = index - size + 1;
         int lastIndex = index;

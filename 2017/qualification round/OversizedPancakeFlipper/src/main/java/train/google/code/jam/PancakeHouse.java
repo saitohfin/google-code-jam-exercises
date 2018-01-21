@@ -1,6 +1,7 @@
 package train.google.code.jam;
 
 import train.google.code.jam.data.PancakeResult;
+import train.google.code.jam.exceptions.ImpossibleHappyPancakeRowException;
 import train.google.code.jam.exceptions.PancakeHouseCreationException;
 
 public class PancakeHouse {
@@ -19,15 +20,26 @@ public class PancakeHouse {
         if(pancakeFlipper.size() < MINIM_FLIPPER_SIZE) throw new PancakeHouseCreationException();
     }
 
-    public PancakeResult fix_pancake(String currentPancake) {
+    public PancakeResult fix_pancake(String currentPancake) throws ImpossibleHappyPancakeRowException {
         Integer amount_flips = 0;
         String pancake = currentPancake.toString();
         while(pancake.contains(WHITE_PANCAKE)){
+            if(numberOfWhitePancakesInTheRow(pancake) < pancakeFlipper.size()) throw new ImpossibleHappyPancakeRowException();
                 pancake = pancakeFlipper.flip(pancake);
                 amount_flips++;
         }
 
         PancakeResult result = new PancakeResult(amount_flips, pancake);
         return result;
+    }
+
+    private int numberOfWhitePancakesInTheRow(String rowOfPancakes) {
+        int numberOfWhitePancakesInARow = 0;
+        for (char pancake : rowOfPancakes.toCharArray()) {
+            if (pancake == '-') {
+                numberOfWhitePancakesInARow++;
+            }
+        }
+        return numberOfWhitePancakesInARow;
     }
 }
