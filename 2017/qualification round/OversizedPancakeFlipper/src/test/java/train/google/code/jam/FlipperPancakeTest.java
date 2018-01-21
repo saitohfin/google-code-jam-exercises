@@ -53,11 +53,25 @@ public class FlipperPancakeTest {
     }
 
     @Test
-    public void flipping_aRowOfFourWhitePancakes_ShouldNeedTwoFlipsAndWillProvideFourHappyPancakes_and_TwoFlips() throws PancakeHouseCreationException
+    public void flipping_aRowOfFourWhitePancakes_ShouldNeedTwoFlipsAndWillProvideFourHappyPancakes() throws PancakeHouseCreationException
     {
         //Arrange
         String currentPancake = "----";
         final PancakeResult expected = new PancakeResult(2, "++++");
+        PancakeFlipper flipper = new PancakeFlipper(2);
+        PancakeHouse house = new PancakeHouse(flipper);
+        //Act
+        PancakeResult result = house.fix_pancake(currentPancake);
+        //Assert
+        assertEquals("We should have two happy pancakes with one flip", expected, result);
+    }
+
+    @Test
+    public void flipping_aRowOfTwoWhitePancakes_and_TwoHappies_ShouldNeedOneFlipAndWillProvideFourHappyPancakes() throws PancakeHouseCreationException
+    {
+        //Arrange
+        String currentPancake = "--++";
+        final PancakeResult expected = new PancakeResult(1, "++++");
         PancakeFlipper flipper = new PancakeFlipper(2);
         PancakeHouse house = new PancakeHouse(flipper);
         //Act
