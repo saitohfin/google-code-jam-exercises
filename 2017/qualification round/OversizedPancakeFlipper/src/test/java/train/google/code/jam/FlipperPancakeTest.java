@@ -2,6 +2,7 @@ package train.google.code.jam;
 
 import org.junit.Before;
 import org.junit.Test;
+import train.google.code.jam.data.PancakeResult;
 import train.google.code.jam.exceptions.PancakeHouseCreationException;
 
 import static org.junit.Assert.assertEquals;
@@ -35,5 +36,19 @@ public class FlipperPancakeTest {
         PancakeResult result = house.flip(currentPancake);
         //Assert
         assertEquals("The result is not correct", expected, result);
+    }
+
+    @Test
+    public void flipping_aRowOfTwoWhitePancakes_ShouldNeedOneFlipAndWillProvideTwoHappyPancakes() throws PancakeHouseCreationException
+    {
+        //Arrange
+        String currentPancake = "--";
+        final PancakeResult expected = new PancakeResult(1, "++");
+        PancakeFlipper flipper = new PancakeFlipper(2);
+        PancakeHouse house = new PancakeHouse(flipper);
+        //Act
+        PancakeResult result = house.flip(currentPancake);
+        //Assert
+        assertEquals("We should have two happy pancakes with one flip", expected, result);
     }
 }
