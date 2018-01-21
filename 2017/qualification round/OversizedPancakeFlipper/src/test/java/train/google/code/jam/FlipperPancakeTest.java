@@ -33,7 +33,7 @@ public class FlipperPancakeTest {
         PancakeFlipper flipper = new PancakeFlipper(2);
         PancakeHouse house = new PancakeHouse(flipper);
         //Act
-        PancakeResult result = house.flip(currentPancake);
+        PancakeResult result = house.fix_pancake(currentPancake);
         //Assert
         assertEquals("The result is not correct", expected, result);
     }
@@ -47,7 +47,7 @@ public class FlipperPancakeTest {
         PancakeFlipper flipper = new PancakeFlipper(2);
         PancakeHouse house = new PancakeHouse(flipper);
         //Act
-        PancakeResult result = house.flip(currentPancake);
+        PancakeResult result = house.fix_pancake(currentPancake);
         //Assert
         assertEquals("We should have two happy pancakes with one flip", expected, result);
     }
