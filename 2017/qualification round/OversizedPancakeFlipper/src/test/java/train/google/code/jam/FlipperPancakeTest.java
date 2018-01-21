@@ -3,6 +3,7 @@ package train.google.code.jam;
 import org.junit.Before;
 import org.junit.Test;
 import train.google.code.jam.data.PancakeResult;
+import train.google.code.jam.exceptions.PancakeBreak;
 import train.google.code.jam.exceptions.PancakeHouseCreationException;
 
 import static org.junit.Assert.assertEquals;
@@ -78,5 +79,17 @@ public class FlipperPancakeTest {
         PancakeResult result = house.fix_pancake(currentPancake);
         //Assert
         assertEquals("We should have two happy pancakes with one flip", expected, result);
+    }
+
+    @Test(expected = PancakeBreak.class)
+    public void flipping_lessWhitePancakes_Than_Flipper_Size_impossible_to_flip() throws PancakeHouseCreationException
+    {
+        //Arrange
+        String currentPancake = "-+";
+        PancakeFlipper flipper = new PancakeFlipper(2);
+        PancakeHouse house = new PancakeHouse(flipper);
+        //Act
+        house.fix_pancake(currentPancake);
+        //Assert exception
     }
 }
