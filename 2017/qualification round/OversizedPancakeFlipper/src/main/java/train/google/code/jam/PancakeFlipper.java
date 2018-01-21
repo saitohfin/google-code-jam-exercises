@@ -20,18 +20,23 @@ public class PancakeFlipper {
             }
 
             if(size.equals(continuos_white)){
-                int first_index = index - size + 1;
-                int lastIndex = index;
-                String fix_pancake = flip_sequence();
-                StringBuilder builder = new StringBuilder();
-                builder.append(new_pancake.substring(0, first_index))
-                        .append(fix_pancake)
-                        .append(new_pancake.substring(lastIndex + 1));
-                new_pancake = builder.toString();
+                new_pancake = replace_sequence(new_pancake, index);
 
             }
         }
         return  new_pancake;
+    }
+
+    private String replace_sequence(String new_pancake, int index) {
+        int first_index = index - size + 1;
+        int lastIndex = index;
+        String fix_pancake = flip_sequence();
+        StringBuilder builder = new StringBuilder();
+        builder.append(new_pancake.substring(0, first_index))
+                .append(fix_pancake)
+                .append(new_pancake.substring(lastIndex + 1));
+        String pancake = builder.toString();
+        return pancake;
     }
 
     private String flip_sequence() {
