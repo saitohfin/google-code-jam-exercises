@@ -1,10 +1,12 @@
 package train.google.code.jam
 
-class TidyNumber(val ordinary_number: Int) {
+class TidyNumber(ordinary_number: Int) {
+
+    private var number: Int = ordinary_number
 
 
     fun number(): Int {
-        return 0
+        return number
     }
 
 }
