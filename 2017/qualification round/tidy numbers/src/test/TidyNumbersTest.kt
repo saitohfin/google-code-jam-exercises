@@ -43,8 +43,8 @@ class TidyNumbersTest() {
 
     @Test
     fun number_132_digitS_not_shorted_return_a_lower_tidynumber_129() {
-        var expected = 9
-        var number = 10
+        var expected = 129
+        var number = 132
         val tidyNumber = TidyNumber(number)
         assertEquals(expected, tidyNumber.number())
     }
