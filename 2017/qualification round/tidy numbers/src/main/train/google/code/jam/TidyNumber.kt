@@ -1,36 +1,27 @@
 package train.google.code.jam
 
-class TidyNumber(ordinary_number: Int) {
+class TidyNumber(ordinary_number: Long) {
 
-    private var number: Int = ordinary_number
+    private var number: Long = extractLowerTidyNumber(ordinary_number)
 
-    init {
-
-        var builder = StringBuilder()
-        var textNumber = ordinary_number.toString().toCharArray()
+    private fun extractLowerTidyNumber(ordinary_number: Long): Long {
+        val textNumber = ordinary_number.toString().toCharArray()
         var position: Int = textNumber.size - 1
         while (position > 0) {
 
-            var currentDigit = textNumber[position]
-            var previousDigit = textNumber[position - 1]
+            val currentDigit = textNumber[position]
+            val previousDigit = textNumber[position - 1]
             if (currentDigit < previousDigit) {
-                builder.append(9)
+                textNumber[position] = '9'
                 textNumber[position - 1] = previousDigit - 1
-            } else {
-                builder.append(currentDigit)
             }
-
             position--
         }
 
-        builder.append(textNumber[0])
-
-
-        number = builder.toString().reversed().toInt()
-
+        return textNumber.joinToString("").toLong()
     }
 
-    fun number(): Int {
+    fun number(): Long {
         return number
     }
 
