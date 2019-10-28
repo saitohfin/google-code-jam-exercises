@@ -1,5 +1,6 @@
-package train.google.code.jam
+package train.google.code.jam.train.google.code.jam
 
+import train.google.code.jam.TidyNumber
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -54,5 +55,13 @@ class TidyNumbersTest() {
         val number = 111111111111111110
         val tidyNumber = TidyNumber(number)
         assertEquals(expected, tidyNumber.number())
+    }
+
+    @Test
+    fun number_100_digitS_not_shorted_return_a_lower_tidynumber_99() {
+        val expected = 99
+        val number = 100
+        val tidyNumber = TidyNumber(number.toLong())
+        assertEquals(expected.toLong(), tidyNumber.number())
     }
 }
